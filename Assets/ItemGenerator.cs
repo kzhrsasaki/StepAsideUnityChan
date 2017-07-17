@@ -60,6 +60,13 @@ public class ItemGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
     void Update () {
-		
+
 	}
+
+	//ユニティちゃんが通り過ぎた後で画面外に出た（課題）
+	void OnBecameInvisible() {
+		//オブジェクトを破壊する（課題）
+		Destroy (this.gameObject);	
+	}
+
 }
