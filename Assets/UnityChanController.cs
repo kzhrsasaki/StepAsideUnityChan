@@ -113,8 +113,8 @@ public class UnityChanController : MonoBehaviour {
 			//stateTextにGAME OVERを表示
 			this.stateText.GetComponent<Text> ().text = "GAME OVER";
 		
-		//衝突せずに画面外に出た(課題)
-		} else if (!GetComponent<Renderer>().isVisible) {
+			//衝突せずに画面外に出た(課題)
+		} else if (!GetComponent<Renderer> ().isVisible) {
 			//オブジェクトを破棄（課題）
 			Destroy (other.gameObject);
 		}
@@ -140,16 +140,17 @@ public class UnityChanController : MonoBehaviour {
 			GetComponent<ParticleSystem> ().Play ();
 
 			//接触したコインのオブジェクトを破棄
-			Destroy (other.gameObject);
-
-		//衝突せずに画面外に出た（課題）
-		} else if (!GetComponent<Renderer>().isVisible){
-			   //オブジェクトを破棄（課題）
-			   Destroy (other.gameObject);			
+			Destroy (other.gameObject);		
 		}
 	 }
+
+	 //ユニティちゃんが通り過ぎて画面外に出た（課題）
+	 void OnBecameInvisible() {
+		//オブジェクトを破壊する（課題）
+		Destroy (this.gameObject);	
+	 }
 	 
-     //ジャンプボタンを押した場合の処理（追加）
+     //ジャンプボタンを押した場合の処理
 	 public void GetMyJumpButtonDown() {
 			
 			if (this.transform.position.y < 0.5f) {
@@ -158,21 +159,22 @@ public class UnityChanController : MonoBehaviour {
 			}
 	 }
 
-	 //左ボタンを押し続けた場合の処理（追加）
+	 //左ボタンを押し続けた場合の処理
 	 public void GetMyLeftButtonDown() {
 			this.isLButtonDown = true;
 	 }
-	 //左ボタンを離した場合の処理（追加）
+	 //左ボタンを離した場合の処理
 	 public void GetMyLeftButtonUp() {
 			this.isLButtonDown = false;
 	 }
 
-	 //右ボタンを押し続けた場合の処理（追加）
+	 //右ボタンを押し続けた場合の処理
 	 public void GetMyRightButtonDown() {
 			this.isRButtonDown = true;
 	 }
-	 //右ボタンを離した場合の処理（追加）
+	 //右ボタンを離した場合の処理
 	 public void GetMyRightButtonUp() {
 			this.isRButtonDown = false;
 	 }
+
 }		 
