@@ -112,11 +112,6 @@ public class UnityChanController : MonoBehaviour {
 
 			//stateTextにGAME OVERを表示
 			this.stateText.GetComponent<Text> ().text = "GAME OVER";
-		
-			//衝突せずに画面外に出た(課題)
-		} else if (!GetComponent<Renderer> ().isVisible) {
-			//オブジェクトを破棄（課題）
-			Destroy (other.gameObject);
 		}
 
 		//ゴール地点に到達した場合
@@ -143,13 +138,7 @@ public class UnityChanController : MonoBehaviour {
 			Destroy (other.gameObject);		
 		}
 	 }
-
-	 //ユニティちゃんが通り過ぎて画面外に出た（課題）
-	 void OnBecameInvisible() {
-		//オブジェクトを破壊する（課題）
-		Destroy (this.gameObject);	
-	 }
-	 
+		
      //ジャンプボタンを押した場合の処理
 	 public void GetMyJumpButtonDown() {
 			
