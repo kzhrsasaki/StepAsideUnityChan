@@ -9,7 +9,7 @@ public class ItemGenerator : MonoBehaviour {
 	//coinPrefabを入れる
 	public GameObject coinPrefab;
 	//cornPrefabを入れる
-	public GameObject cornPrefab;
+	public GameObject conePrefab;
 
 	//スタート地点
 	private int startPos = -160;
@@ -19,8 +19,13 @@ public class ItemGenerator : MonoBehaviour {
 	//アイテムを出すx方向の範囲
 	private float posRange = 3.4f;
 
+	//unitychanの定義
+	private GameObject unitychan;
+
 	// Use this for initialization
 	void Start () {
+
+		this.unitychan = GameObject.Find ("unitychan");
 
 		//一定の距離ごとにアイテムを生成
 		for (int i = startPos; i < goalPos; i+=15) {
@@ -29,7 +34,7 @@ public class ItemGenerator : MonoBehaviour {
 			if (num <= 1) {
 				//コーンをx軸方向に一直線に生成
 				for (float j = -1; j <= 1; j += 0.4f) {
-					GameObject cone = Instantiate (cornPrefab) as GameObject;
+					GameObject cone = Instantiate (conePrefab) as GameObject;
 					cone.transform.position = new Vector3 (4 * j, cone.transform.position.y, i);
 				}
 
@@ -61,12 +66,10 @@ public class ItemGenerator : MonoBehaviour {
 	// Update is called once per frame
     void Update () {
 
-	}
-
-	//ユニティちゃんが通り過ぎた後で画面外に出た（課題）
-	void OnBecameInvisible() {
-		//オブジェクトを破壊する（課題）
-		Destroy (this.gameObject);	
-	}
-
+		//Debug.Log(string.Format("{0} {1}", transform.position.z, unitychan.transform.position.z));
+		if (transform.position.z <= unitychan.transform.position.z - 4.0f) {
+			Debug.Log ("item destroyed.");
+			Destroy (this.gameObject);
+		}
+	}		
 }
