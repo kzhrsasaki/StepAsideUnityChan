@@ -19,13 +19,9 @@ public class ItemGenerator : MonoBehaviour {
 	//アイテムを出すx方向の範囲
 	private float posRange = 3.4f;
 
-	//unitychanの定義
-	private GameObject unitychan;
 
 	// Use this for initialization
 	void Start () {
-
-		this.unitychan = GameObject.Find ("unitychan");
 
 		//一定の距離ごとにアイテムを生成
 		for (int i = startPos; i < goalPos; i+=15) {
@@ -66,10 +62,5 @@ public class ItemGenerator : MonoBehaviour {
 	// Update is called once per frame
     void Update () {
 
-		//Debug.Log(string.Format("{0} {1}", transform.position.z, unitychan.transform.position.z));
-		if (transform.position.z <= unitychan.transform.position.z - 4.0f) {
-			Debug.Log ("item destroyed.");
-			Destroy (this.gameObject);
-		}
 	}		
 }
